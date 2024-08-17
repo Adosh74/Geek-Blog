@@ -1,13 +1,8 @@
 package cmd
 
 import (
-	"net/http"
-
-	"github.com/Adosh74/geek-blog/pkg/config"
-	"github.com/Adosh74/geek-blog/pkg/routing"
-	"github.com/gin-gonic/gin"
+	"github.com/Adosh74/geek-blog/pkg/bootstrap"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 func init() {
@@ -24,16 +19,5 @@ var serveCmd = &cobra.Command{
 }
 
 func serve() {
-
-	config.Set()
-
-	router := routing.GetRouter()
-
-	router.GET("/healthz", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message":  "OK",
-			"app name": viper.Get("App.Name"),
-		})
-	})
-	routing.Serve()
+	bootstrap.Serve()
 }
