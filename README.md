@@ -8,3 +8,5 @@ This is a blog for geeks. It is a platform where geeks can share their knowledge
 
 - Golang
 - Gin
+- Viper
+- Cobra
